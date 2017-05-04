@@ -1,0 +1,17 @@
+{% extends "shopper/base.html" %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+<div class="container">
+
+<form method="post" action="/shopper/register/">
+{% csrf_token %}
+    Email <input type="text" id="email" name="email"><br>
+    First Name <input type="text" id="first_name" name="first_name"><br>
+    Last Name <input type="text" id="last_name" name="last_name"><br>
+    City <input type="text" id="city" name="city"><br>
+    State <input type="text" id="state" name="state"><br>
+    <button id="submit" type="submit">Submit</button> 
+ {% endblock %}

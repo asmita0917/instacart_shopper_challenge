@@ -7,7 +7,8 @@ from django.utils import timezone
 class Applicant(models.Model):
 
     id = models.AutoField(serialize=False, primary_key=True)
-    name = models.CharField(max_length=100)
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
     email = models.CharField(max_length=100, unique=True)
     city = models.CharField(max_length=100)
     state = models.CharField(max_length=100)
@@ -17,4 +18,4 @@ class Applicant(models.Model):
     updated_at = models.DateField(default=timezone.now)
 
     def __str__(self):
-        return '%s %s %s %s %s' % (self.id, self.name, self.email, self.workflow_state, self.application_date)
+        return '%s %s %s %s %s %s' % (self.id, self.first_name, self.last_name, self.email, self.workflow_state, self.application_date)

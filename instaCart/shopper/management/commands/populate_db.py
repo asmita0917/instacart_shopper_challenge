@@ -43,14 +43,15 @@ class Command(BaseCommand):
 
         i = 0
         while i < number_of_entries: 
-            name = next(name_gen)
+            first_name = next(name_gen)
+            last_name = next(name_gen)
             email = next(email_gen)
             city_state = self.city_state_gen()
             city = city_state[0].strip()
             state = city_state[1].strip()
             application_date = self.date_generator()
             workflow_state = self.workflow_state_gen()
-            applicant = Applicant(name=name, email=email, city=city, state=state, application_date=application_date, workflow_state=workflow_state)
+            applicant = Applicant(first_name=first_name, last_name=last_name, email=email, city=city, state=state, application_date=application_date, workflow_state=workflow_state)
             try:
                 applicant.save()
             except IntegrityError:
