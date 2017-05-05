@@ -10,6 +10,7 @@ import datetime
 import time, json
 
 from shopper.models import Applicant
+from shopper.funnel import *
 
 
 def createSession(request, applicant):
@@ -67,7 +68,6 @@ def logout(request):
 
 
 def register(request):
-
     if request.POST:
         email = request.POST['email']
         first_name = request.POST['first_name']
@@ -82,7 +82,6 @@ def register(request):
     return render(request,'shopper/register.html')
 
 def edit(request):
-
     if request.session['email'] is None:
         return redirect('login')
     if request.POST:
@@ -103,3 +102,12 @@ def edit(request):
     email = request.session['email']
     applicant = Applicant.objects.get(email=email)
     return render(request,'shopper/edit.html', applicant.__dict__)
+
+def funnel(request):
+    start_date_str="2010-10-01";
+    end_date_str="2014-12-31"
+    start_date = datetime.datetime.strptime(start_date_str, '%Y-%m-%d').date()
+    end_date = datetime.datetime.strptime(end_date_str , '%Y-%m-%d').date() 
+    
+    analytic_metrics=get_analytics(start_date, end_date)
+    return HttpResponse(json.dumps(analytic_metrics), content_type="application/json")

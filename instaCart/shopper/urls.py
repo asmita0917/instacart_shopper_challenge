@@ -8,4 +8,5 @@ urlpatterns = [
     url(r'^logout/$', views.logout, name='logout'), 
     url(r'^register/$', views.register, name='register'),
     url(r'^edit/$', views.edit, name='edit'),
+    url(r'^funnel/$', views.funnel, name='funnel'), 
 ]
