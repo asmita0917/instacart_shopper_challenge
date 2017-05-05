@@ -104,10 +104,16 @@ def edit(request):
     return render(request,'shopper/edit.html', applicant.__dict__)
 
 def funnel(request):
-    start_date_str="2010-10-01";
-    end_date_str="2014-12-31"
-    start_date = datetime.datetime.strptime(start_date_str, '%Y-%m-%d').date()
-    end_date = datetime.datetime.strptime(end_date_str , '%Y-%m-%d').date() 
-    
+    try:
+        request_params = request.GET
+        start_date_str = request_params['start_date']
+        end_date_str = request_params['end_date']
+        start_date = datetime.strptime(start_date_str, '%Y-%m-%d').date()
+        end_date = datetime.strptime(end_date_str , '%Y-%m-%d').date() 
+    except Exception as e:
+        return HttpResponseBadRequest(e.message)
+
+    start_time = time.time()
     analytic_metrics=get_analytics(start_date, end_date)
+    print("--- %s seconds ---" % (time.time() - start_time))
     return HttpResponse(json.dumps(analytic_metrics), content_type="application/json")
