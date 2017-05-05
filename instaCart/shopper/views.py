@@ -12,7 +12,6 @@ import time, json
 from shopper.models import Applicant
 from shopper.funnel import *
 
-
 def createSession(request, applicant):
     request.session['first_name'] = applicant.first_name
     request.session['last_name'] = applicant.last_name
@@ -37,7 +36,7 @@ def shopper_home(request):
         return redirect('login')
     email = request.session['email']
     applicant = Applicant.objects.get(email=email)
-    return render(request,'shopper/applicant_home.html',applicant.__dict__)
+    return render(request,'shopper/Aplicant-home.html',applicant.__dict__)
 
 
 def login(request):
@@ -47,7 +46,7 @@ def login(request):
         try:
             applicant = Applicant.objects.get(email=email)
             createSession(request, applicant)
-            return render(request,'shopper/applicant_home.html',applicant.__dict__)
+            return render(request,'shopper/Aplicant-home.html',applicant.__dict__)
         except ObjectDoesNotExist:
             #TODO Message some error
             redirect('login')
@@ -68,6 +67,7 @@ def logout(request):
 
 
 def register(request):
+
     if request.POST:
         email = request.POST['email']
         first_name = request.POST['first_name']
@@ -76,12 +76,14 @@ def register(request):
         state = request.POST['state']
         applicant = Applicant(first_name=first_name, last_name=last_name, email=email, city=city, state=state)
         applicant.save()
+        invalidate_cache(timezone.now())
         createSession(request, applicant)
         return redirect('shopper_home')
     
     return render(request,'shopper/register.html')
 
 def edit(request):
+
     if request.session['email'] is None:
         return redirect('login')
     if request.POST:
@@ -104,6 +106,8 @@ def edit(request):
     return render(request,'shopper/edit.html', applicant.__dict__)
 
 def funnel(request):
+    #start_date_str="2010-10-01";
+    #end_date_str="2014-12-31"
     try:
         request_params = request.GET
         start_date_str = request_params['start_date']
@@ -117,3 +121,5 @@ def funnel(request):
     analytic_metrics=get_analytics(start_date, end_date)
     print("--- %s seconds ---" % (time.time() - start_time))
     return HttpResponse(json.dumps(analytic_metrics), content_type="application/json")
+
+
