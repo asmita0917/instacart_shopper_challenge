@@ -1,0 +1,280 @@
+{% extends "shopper/base.html" %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+<div class="backgroung-landing">
+    <div class="row headerBg">
+            <div class="col-lg-8  " >
+                <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+                    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="row">
+                        <div class="col-md-10"><a class="navbar-brand " href="#"><img class="title-logo" src="instacart-logo.png"></a></div>
+                        <div class="collapse navbar-collapse col-md-2" id="navbarNav" >
+                            <ul class="navbar-nav">
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link"  data-toggle="modal" data-target="#login">Login</a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+
+                </nav>
+
+
+            </div>
+    </div>
+    <div class="container">
+        <!-- Content here -->
+
+        <div class=" row backgroung-form ">
+
+            <div id="carouselExampleIndicators" class="carousel slide slide-backgroung col-md-7" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                    <!--<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>-->
+                </ol>
+                <div class="carousel-inner " role="listbox">
+                    <div class="carousel-item row active">
+                        <!--<img class="d-block img-fluid" src="slideImage.jpg" alt="First slide">-->
+                        <div class="row slide-header"><h2>No Car? No Problem</h2></div>
+                        <div class="row slide-content">
+                            <div class="col-sm-6">
+                                <h5>Shopper</h5>
+                                <div >Shop for grocery orders in local stores.</div>
+                                <ul>
+                                    <li>Shopping only</li>
+                                    <li>No vehicle required</li>
+                                    <li>Flexible schedule</li>
+                                    <li>Work up to 29 hrs/wk</li>
+                                </ul>
+                            </div>
+                            <div class="col-sm-6">
+                                <h5>Cashier</h5>
+                                <div>Work the cash register to check out orders</div>
+                                <ul>
+                                    <li>Check-out only</li>
+                                    <li>No vehicle required</li>
+                                    <li>Flexible schedule</li>
+                                    <li>Work up to 29 hrs/wk</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="carousel-item row">
+                        <!--<img class="d-block img-fluid" src="slideImage.jpg" alt="Second slide">-->
+                        <div class="row slide-header"><h2>Car Required</h2></div>
+                        <div class="row slide-content ">
+                            <div class="col-sm-6">
+                                <h5>Driver</h5>
+                                <div>Deliver groceries from local stores to customers.</div>
+                                <ul>
+                                    <li>Delivery only</li>
+                                    <li>Vehicle required</li>
+                                    <li>Flexible schedule</li>
+                                    <li>Work up to 29 hrs/wk</li>
+                                </ul>
+                            </div>
+                            <div class="col-sm-6 ">
+                                <h5>Driver + Shopper</h5>
+                                <div>Shop for groceries and deliver them to customers</div>
+                                <ul>
+                                    <li>Delivery and shopping</li>
+                                    <li>Vehicle required</li>
+                                    <li>Flexible schedule</li>
+                                    <li>Work up to 29 hrs/wk</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+
+
+            <div class="col-md-5">
+                <!--<div class="row">-->
+                    <!--<div class="col-xs-4 padding">Be Independent</div>-->
+                    <!--<div class="col-xs-4 padding"> Have Fun</div>-->
+                    <!--<div class="col-xs-4 padding text-right"> Earn extra income</div>-->
+                <!--</div>-->
+                <div class="row container">
+                    <p class="text-landing"> Apply in under 5 minutes! Attend an in-person session
+                                                and start working in a week!
+                    </p>
+                    <button type="button" class="btn btn-success margin-button" data-toggle="modal" data-target="#myModal">Apply Now</button>
+
+                </div>
+
+            </div>
+            <!-- Modal -->
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Please sign up for Instacart</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+
+                            <div class="">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title"> <small>It's free!</small></h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        <form role="form">
+                                            <div class="row">
+                                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                                    <div class="form-group">
+                                                        <input type="text" name="first_name" id="first_name" class="form-control input-sm" placeholder="First Name" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                                    <div class="form-group">
+                                                        <input type="text" name="last_name" id="last_name" class="form-control input-sm" placeholder="Last Name" required>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <input type="email"   id="email" class="form-control input-sm" placeholder="Email Address" >
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                                    <div class="form-group">
+                                                        <input type="password" name="password" id="password" class="form-control input-sm" placeholder="Password">
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                                    <div class="form-group">
+                                                        <input type="password" name="password_confirmation" id="password_confirmation" class="form-control input-sm" placeholder="Confirm Password">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!--<input type="submit" value="Register" class="btn btn-info btn-block">-->
+
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" id="continue" class="btn btn-success" data-toggle="modal" data-target="#agreementModal" data-dismiss="modal" onclick="validateEmail()">Continue</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal2 -->
+
+            <div class="modal fade" id="agreementModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modalLabel">ALMOST DONE
+                            </h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            We need to run a background check to complete your application.
+                            Can we run one on your behalf?
+                            <!-- YOU'RE ALL SET Look out for an email from us in the next 24 hours -->
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#confirmation" data-dismiss="modal" >I Agree</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MoDal3-->
+
+            <div class="modal fade" id="confirmation" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modalheader">Confirmation
+                            </h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            YOU'RE ALL SET Look out for an email from us in the next 24 hours
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <form action="http://localhost:63342/InstacartWebdesign/Aplicant-home.html?">
+                                <button type="submit" class="btn btn-success" value="Ok">OK</button>
+                            </form>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MoDal4-->
+
+            <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="loginheader">Login
+                            </h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class=" row form-group padding-left">
+                            <label class="control-label col-md-2 ">Email:</label>
+                            <input type="email" name="email" id="loginemail" class="form-control input-sm col-sm-8" placeholder="Email Address">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <form action="">
+                                <button type="submit" class="btn btn-success" value="Ok">OK</button>
+                            </form>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+ {% endblock %}

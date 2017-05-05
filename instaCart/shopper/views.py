@@ -27,6 +27,10 @@ def destroySession(request, applicant):
     request.session['state'] = None
 
 # Create your views here.
+
+def index(request):
+   return render(request,'shopper/landing.html')
+   
 def shopper_home(request):
 
     #now = datetime.datetime.now()
@@ -36,7 +40,7 @@ def shopper_home(request):
         return redirect('login')
     email = request.session['email']
     applicant = Applicant.objects.get(email=email)
-    return render(request,'shopper/Aplicant-home.html',applicant.__dict__)
+    return render(request,'shopper/applicant_home.html',applicant.__dict__)
 
 
 def login(request):
@@ -46,7 +50,7 @@ def login(request):
         try:
             applicant = Applicant.objects.get(email=email)
             createSession(request, applicant)
-            return render(request,'shopper/Aplicant-home.html',applicant.__dict__)
+            return redirect('shopper_home')
         except ObjectDoesNotExist:
             #TODO Message some error
             redirect('login')
