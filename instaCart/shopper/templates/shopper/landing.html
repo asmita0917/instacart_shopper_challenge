@@ -148,7 +148,8 @@
                                         <h3 class="panel-title"> <small>It's free!</small></h3>
                                     </div>
                                     <div class="panel-body">
-                                        <form role="form">
+                                        <form role="form" method="post" action="/shopper/register/">
+                                        {% csrf_token %}
                                             <div class="row">
                                                 <div class="col-xs-6 col-sm-6 col-md-6">
                                                     <div class="form-group">
@@ -259,12 +260,14 @@
                             </button>
                         </div>
                         <div class=" row form-group padding-left">
+                         <form method="post" action="/shopper/login/">
                             <label class="control-label col-md-2 ">Email:</label>
                             <input type="email" name="email" id="loginemail" class="form-control input-sm col-sm-8" placeholder="Email Address">
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <form action="">
+                           
+                            {% csrf_token %}
                                 <button type="submit" class="btn btn-success" value="Ok">OK</button>
                             </form>
 
