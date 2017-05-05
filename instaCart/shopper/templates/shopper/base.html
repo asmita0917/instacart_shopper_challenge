@@ -15,14 +15,15 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+ <script type="text/javascript" src= "{% static 'main.js' %}" ></script>
 
-    
+
 
     </head>
  {% block header %}{% endblock %}
-    <body>       
+    <body>
        {% block extra_css %}{% endblock %}
         {% block content %}{% endblock %}
-        
+
     </body>
 </html>

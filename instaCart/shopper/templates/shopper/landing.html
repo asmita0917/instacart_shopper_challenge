@@ -40,7 +40,7 @@
     <div class="container">
         <!-- Content here -->
 
-        <div class=" row backgroung-form ">
+        <form class=" row backgroung-form ">
 
             <div id="carouselExampleIndicators" class="carousel slide slide-backgroung col-md-7" data-ride="carousel">
                 <ol class="carousel-indicators">
@@ -214,7 +214,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#confirmation" data-dismiss="modal" >I Agree</button>
+                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#confirmation" data-dismiss="modal" onclick="addAttribute()" >I Agree</button>
                         </div>
                     </div>
                 </div>
@@ -237,8 +237,9 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <form action="http://localhost:63342/InstacartWebdesign/Aplicant-home.html?">
-                                <button type="submit" class="btn btn-success" value="Ok">OK</button>
+                            <form method="post" action="/shopper/register/" id="form" >
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-success" value="Ok"></button>
                             </form>
 
 
@@ -251,6 +252,7 @@
 
             <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
+                    <form method="post" action="/shopper/login/">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="loginheader">Login
@@ -260,20 +262,18 @@
                             </button>
                         </div>
                         <div class=" row form-group padding-left">
-                         <form method="post" action="/shopper/login/">
+
                             <label class="control-label col-md-2 ">Email:</label>
                             <input type="email" name="email" id="loginemail" class="form-control input-sm col-sm-8" placeholder="Email Address">
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                           
+
                             {% csrf_token %}
                                 <button type="submit" class="btn btn-success" value="Ok">OK</button>
-                            </form>
-
-
                         </div>
                     </div>
+                    </form>
                 </div>
             </div>
 
