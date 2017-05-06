@@ -119,3 +119,8 @@ div.transbox {
     padding: 5%;
     padding-left: 30%;
 }
+.login-border{
+    border-bottom: 1px solid #ffffff;
+    border-top: 1px solid #ffffff;
+
+}
