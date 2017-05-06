@@ -25,8 +25,8 @@ def get_analytics(start_date, end_date):
                 week_start, week_end)).values(
                 'workflow_state').annotate(
                 count=Count('workflow_state'))
+            weekly_workflow_stats = {}
             if workflow_state_counts:     
-                weekly_workflow_stats = {}
                 for state in workflow_state_counts:
                     weekly_workflow_stats[state['workflow_state']] = state['count']
             cache.set(week_key, weekly_workflow_stats)
