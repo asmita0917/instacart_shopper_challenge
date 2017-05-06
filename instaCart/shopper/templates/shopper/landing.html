@@ -4,6 +4,22 @@
 {% endblock %}
 
 {% block content %}
+{% if invalidEmail %}
+    <script>
+    $(function() {
+        console.log("aaa");
+      $('#login').modal({show: true});
+    });
+    </script>
+{% elif messages %} 
+    <script>
+    $(function() {
+        console.log("aaa");
+      $('#myModal').modal({show: true});
+    });
+    </script> 
+{% endif %}
+
 <div class="backgroung-landing">
     <div class="row headerBg">
             <!--<div class="col-md-4 "><a href="#/Home"><img class="title-logo" src="instacart-logo.png"></a></div>-->
@@ -261,9 +277,9 @@
                             </button>
                         </div>
                         <div class=" row form-group padding-left">
-
-                            <label class="control-label col-md-4 "  >Email:</label>
-                            <input type="email" name="email" id="loginemail" class="form-control input-sm col-sm-6 " placeholder="Email Address">
+                         <form method="post" action="/shopper/login/">
+                            <label class="control-label col-md-2 ">Email:</label>
+                            <input type="email" name="email" id="loginemail" class="form-control input-sm col-sm-8" value="{{ invalidEmail}}">
                         </div>
                         <div class="modal-footer login-border">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

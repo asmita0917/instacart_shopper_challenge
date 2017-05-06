@@ -6,6 +6,10 @@ from django.http import HttpResponse, HttpResponseBadRequest
 from django.template import Context
 from django.core.exceptions import ObjectDoesNotExist
 from django.utils import timezone
+from django.contrib import messages
+from django.db import IntegrityError
+
+
 import datetime
 import time, json
 
@@ -33,9 +37,6 @@ def index(request):
    
 def shopper_home(request):
 
-    #now = datetime.datetime.now()
-    #html = "<html><body>It is now %s.</body></html>" % now
-    #return HttpResponse(html)
     if request.session['email'] is None:
         return redirect('login')
     email = request.session['email']
@@ -52,13 +53,15 @@ def login(request):
             createSession(request, applicant)
             return redirect('shopper_home')
         except ObjectDoesNotExist:
-            #TODO Message some error
-            redirect('login')
+            error_message ="User does not exist"
+            messages.add_message(request, messages.ERROR, error_message)
+            errorObj = {}
+            errorObj['invalidEmail'] = email
+            return render(request,'shopper/landing.html', errorObj)
         
     
-    return render(request,'shopper/login.html')
-    #if request.POST:
-    #   return render(request,'shopper/login.html')
+    return render(request,'shopper/landing.html')
+
 
 
 def logout(request):
@@ -79,12 +82,18 @@ def register(request):
         city = request.POST['city']
         state = request.POST['state']
         applicant = Applicant(first_name=first_name, last_name=last_name, email=email, city=city, state=state)
-        applicant.save()
+        try:
+            applicant.save()
+        except IntegrityError:
+            error_message ="Email already exists"
+            print error_message
+            messages.add_message(request, messages.ERROR, error_message)
+            return render(request,'shopper/landing.html',  applicant.__dict__)
         invalidate_cache(timezone.now())
         createSession(request, applicant)
         return redirect('shopper_home')
     
-    return render(request,'shopper/register.html')
+    return render(request,'shopper/landing.html')
 
 def edit(request):
 
