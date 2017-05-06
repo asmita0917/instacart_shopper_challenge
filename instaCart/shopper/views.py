@@ -16,6 +16,7 @@ import time, json
 from shopper.models import Applicant
 from shopper.funnel import *
 
+## Util function to create and destroy functions
 def createSession(request, applicant):
     request.session['first_name'] = applicant.first_name
     request.session['last_name'] = applicant.last_name
@@ -33,10 +34,11 @@ def destroySession(request, applicant):
 # Create your views here.
 
 def index(request):
+    # This is the landing page, it just redirects to the home page
    return render(request,'shopper/landing.html')
    
 def shopper_home(request):
-
+    # A shopper lands here either after logging in or after registration
     if request.session['email'] is None:
         return redirect('login')
     email = request.session['email']
@@ -45,7 +47,8 @@ def shopper_home(request):
 
 
 def login(request):
-
+    # Triggered by login request, if the email id doesn't exists, then return
+    # error, otherwise success
     if request.POST:
         email = request.POST['email']
         try:
@@ -59,22 +62,23 @@ def login(request):
             errorObj['invalidEmail'] = email
             return render(request,'shopper/landing.html', errorObj)
         
-    
+    #For get requests just redirect to landing page
     return render(request,'shopper/landing.html')
 
 
 
 def logout(request):
+    # Destroy the session if already logged in
     if request.session['email'] is None:
         return redirect('login')
     email = request.session['email']
     applicant = Applicant.objects.get(email=email)
     destroySession(request, applicant)
-    return render(request,'shopper/login.html')
+    return render(request,'shopper/landing.html')
 
 
 def register(request):
-
+    # If email is unique then register, otherwise error
     if request.POST:
         email = request.POST['email']
         first_name = request.POST['first_name']
@@ -95,8 +99,9 @@ def register(request):
     
     return render(request,'shopper/landing.html')
 
-def edit(request):
 
+def edit(request):
+    # Check if logged in, if logged in then 
     if request.session['email'] is None:
         return redirect('login')
     if request.POST:
@@ -114,13 +119,17 @@ def edit(request):
         applicant.save()
         createSession(request, applicant)
         return redirect('shopper_home')
+
+    # If a separate edit page was used, then the get request would have been
+    # used to render edit form. But now I am using modal, hence the code below
+    # is no-op.
     email = request.session['email']
     applicant = Applicant.objects.get(email=email)
-    return render(request,'shopper/edit.html', applicant.__dict__)
+    return render(request,'shopper/applicant_home.html', applicant.__dict__)
 
 def funnel(request):
-    #start_date_str="2010-10-01";
-    #end_date_str="2014-12-31"
+    # Funnel API to get the metrics. It will try to first convert the dates
+    # If successful, it asks Funnel module for the analytics else errors
     try:
         request_params = request.GET
         start_date_str = request_params['start_date']
