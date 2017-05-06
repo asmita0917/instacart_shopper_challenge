@@ -14,8 +14,12 @@
 {% elif messages %}
     <script>
     $(function() {
-        console.log("aaa");
       $('#myModal').modal({show: true});
+        $('#fname').attr('value', '{{ first_name}}');
+        $('#lname').attr('value', '{{ last_name}}');
+        $('#email').attr('value', '{{ email}}');
+        $('#city').attr('value', '{{ city}}');
+        $('#state').attr('value', '{{ state}}');
     });
     </script>
 {% endif %}
@@ -249,10 +253,9 @@
                             YOU'RE ALL SET Look out for an email from us in the next 24 hours
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                             <form method="post" action="/shopper/register/" id="form" >
                                 {% csrf_token %}
-                                <button type="submit" class="btn btn-success" value="Ok">Ok</button>
+                                <button type="submit" class="btn btn-success margin">Ok</button>
                             </form>
 
 
@@ -280,21 +283,18 @@
                          </form>
                         </div>
                         <div class="modal-footer login-border">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-secondary padding-top" data-dismiss="modal">Close</button>
 
                             {% csrf_token %}
-                                <button type="submit" class="btn btn-success" value="Ok">OK</button>
+                                <button type="submit"  class="btn btn-success">OK</button>
                         </div>
                     </div>
                     </form>
                 </div>
             </div>
 
-
         </form>
         </div>
-
-
     </div>
 
 
