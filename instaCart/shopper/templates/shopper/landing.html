@@ -4,6 +4,14 @@
 {% endblock %}
 
 {% block content %}
+{% if messages %}
+    <script>
+    $(function() {
+        console.log("aaa");
+      $('#login').modal({show: true});
+    });
+    </script>
+{% endif %}
 <div class="backgroung-landing">
     <div class="row headerBg">
             <!--<div class="col-md-4 "><a href="#/Home"><img class="title-logo" src="instacart-logo.png"></a></div>-->
@@ -262,7 +270,7 @@
                         <div class=" row form-group padding-left">
                          <form method="post" action="/shopper/login/">
                             <label class="control-label col-md-2 ">Email:</label>
-                            <input type="email" name="email" id="loginemail" class="form-control input-sm col-sm-8" placeholder="Email Address">
+                            <input type="email" name="email" id="loginemail" class="form-control input-sm col-sm-8" value="{{ email}}">
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

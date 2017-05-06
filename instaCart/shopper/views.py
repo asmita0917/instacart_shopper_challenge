@@ -6,6 +6,8 @@ from django.http import HttpResponse, HttpResponseBadRequest
 from django.template import Context
 from django.core.exceptions import ObjectDoesNotExist
 from django.utils import timezone
+from django.contrib import messages
+
 import datetime
 import time, json
 
@@ -29,6 +31,7 @@ def destroySession(request, applicant):
 # Create your views here.
 
 def index(request):
+   print "index"
    return render(request,'shopper/landing.html')
    
 def shopper_home(request):
@@ -52,11 +55,15 @@ def login(request):
             createSession(request, applicant)
             return redirect('shopper_home')
         except ObjectDoesNotExist:
-            #TODO Message some error
-            redirect('login')
+            error_message ="User does not exist"
+            print error_message
+            messages.add_message(request, messages.ERROR, error_message)
+            errorObj = {}
+            errorObj['email'] = email
+            return render(request,'shopper/landing.html', errorObj)
         
     
-    return render(request,'shopper/login.html')
+    return render(request,'shopper/landing.html')
     #if request.POST:
     #   return render(request,'shopper/login.html')
 
